@@ -3,13 +3,10 @@ extends CharacterBody2D
 @export var moveSpeed: float = 100.0
 
 func _physics_process(delta):
-	velocity = Vector2.ZERO
-	if Input.is_action_pressed("ui_left"):
-		velocity.x = -moveSpeed
-	if Input.is_action_pressed("ui_right"):
-		velocity.x = moveSpeed
-	if Input.is_action_pressed("ui_down"):
-		velocity.y = moveSpeed
-	if Input.is_action_pressed("ui_up"):
-		velocity.y = -moveSpeed
+	var inputVec = Input.get_vector('move_left', 'move_right', 'move_up', 'move_down')
+	if inputVec:
+		velocity = inputVec * moveSpeed
+	else:
+		velocity = Vector2.ZERO
+
 	move_and_slide()
