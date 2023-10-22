@@ -13,3 +13,4 @@ export.cfg
 .mono/
 data_*/
 mono_crash.*.json
+server.bat
