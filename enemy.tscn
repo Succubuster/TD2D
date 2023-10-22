@@ -19,4 +19,4 @@ shape = SubResource("RectangleShape2D_7msjw")
 metadata/_edit_lock_ = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 1.0
+avoidance_enabled = true
