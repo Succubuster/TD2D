@@ -5,10 +5,10 @@ extends CharacterBody2D
 @onready var Player = $"/root/Main/Player"
 @onready var NavAgent = $NavigationAgent2D
 
+
 func _ready():
-	var randAngle = randi() % 360
-	var radius = 150
-	position = Vector2(sin(randAngle), cos(randAngle)) * radius
+	pass
+
 
 func _physics_process(delta):
 	NavAgent.target_position = Player.position
