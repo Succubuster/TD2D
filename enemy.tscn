@@ -14,9 +14,8 @@ script = ExtResource("1_xy7cn")
 texture = ExtResource("2_70gep")
 metadata/_edit_lock_ = true
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7msjw")
 metadata/_edit_lock_ = true
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true

@@ -6,3 +6,7 @@ func _ready():
 		func ():
 			add_child(Enemy.instantiate())
 	).set_delay(1)
+
+func _input(event):
+	if Input.is_action_just_pressed("reset_scene"):
+		get_tree().reload_current_scene()
