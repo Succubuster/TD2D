@@ -3,18 +3,20 @@
 [ext_resource type="Script" path="res://Enemy.gd" id="1_xy7cn"]
 [ext_resource type="Texture2D" uid="uid://bup3g3id6j0bw" path="res://Sprites/tile_0122.png" id="2_70gep"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qx284"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7msjw"]
+size = Vector2(16, 16)
 
 [node name="Enemy" type="CharacterBody2D"]
+position = Vector2(142, -143)
 script = ExtResource("1_xy7cn")
 
 [node name="Tile0122" type="Sprite2D" parent="."]
 texture = ExtResource("2_70gep")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qx284")
-metadata/_edit_lock_ = true
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7msjw")
+metadata/_edit_lock_ = true
