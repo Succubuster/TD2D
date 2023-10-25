@@ -17,3 +17,7 @@ func getInput():
 		velocity = inputVec * moveSpeed
 	else:
 		velocity = Vector2.ZERO
+
+func changeHealth(change: float):
+	$HealthBar.value += change
+	
