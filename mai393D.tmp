@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://pqwns778tv3a"]
+[gd_scene load_steps=10 format=3 uid="uid://pqwns778tv3a"]
 
 [ext_resource type="Texture2D" uid="uid://dtw7xncjjs15l" path="res://Sprites/tilemap.png" id="1_3xdk2"]
 [ext_resource type="Script" path="res://main.gd" id="1_pq17p"]
 [ext_resource type="Script" path="res://Player.gd" id="2_qmiiv"]
 [ext_resource type="Texture2D" uid="uid://btc8rcv6ffbp6" path="res://Sprites/tile_0096.png" id="2_sjf1f"]
-[ext_resource type="Script" path="res://AttackRangeAnchor.gd" id="5_mpf6k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x5tjy"]
 texture = ExtResource("1_3xdk2")
@@ -467,13 +466,7 @@ shape = SubResource("CapsuleShape2D_7yxtg")
 zoom = Vector2(4, 4)
 
 [node name="AttackRangeAnchor" type="Area2D" parent="Player"]
-script = ExtResource("5_mpf6k")
 
 [node name="AttackRange" type="CollisionShape2D" parent="Player/AttackRangeAnchor"]
 shape = SubResource("CircleShape2D_l0sng")
 debug_color = Color(0, 0.6, 0.701961, 0.415686)
-
-[node name="AttackFrequency" type="Timer" parent="Player/AttackRangeAnchor"]
-one_shot = true
-
-[connection signal="body_entered" from="Player/AttackRangeAnchor" to="Player/AttackRangeAnchor" method="_on_body_entered"]
