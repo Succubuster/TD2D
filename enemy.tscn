@@ -15,10 +15,7 @@ texture = ExtResource("2_70gep")
 metadata/_edit_lock_ = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 1.0
-path_max_distance = 10.0
-path_postprocessing = 1
-debug_enabled = true
+path_desired_distance = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7msjw")
