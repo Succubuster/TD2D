@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var moveSpeed: float = 50.0
-@export var damage: float = 1.0
+@export var damage: float = 10.0
 
 @onready var Player = $"/root/Main/Player"
 @onready var NavAgent = $NavigationAgent2D
