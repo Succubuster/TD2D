@@ -23,3 +23,10 @@ func _physics_process(delta):
 		if get_last_slide_collision().get_collider().name == "Player":
 			Player.changeHealth(-damage)
 			queue_free()
+
+
+func set_random_pos() -> CharacterBody2D:
+	var randAngle = randi() % 360
+	var radius = 150
+	position = Vector2(sin(randAngle), cos(randAngle)) * radius
+	return self
