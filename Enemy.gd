@@ -16,11 +16,10 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
-	if get_last_slide_collision():
-		if get_last_slide_collision().get_collider().name == "Player":
-			Player.changeHealth(-damage)
-			queue_free()
 
+func hit(player):
+	player.changeHealth(-damage)
+	death()
 
 func death():
 	if $"/root/Main": # needed from scene reload crash?
