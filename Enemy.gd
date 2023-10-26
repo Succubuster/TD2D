@@ -6,10 +6,7 @@ extends CharacterBody2D
 @onready var Player = $"/root/Main/Player"
 @onready var NavAgent = $NavigationAgent2D
 
-
-func _ready():
-	pass
-
+@onready var XP = preload("res://xp.tscn")
 
 func _physics_process(delta):
 	NavAgent.target_position = Player.position
@@ -19,14 +16,21 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
-	if get_last_slide_collision():
-		if get_last_slide_collision().get_collider().name == "Player":
-			Player.changeHealth(-damage)
-			queue_free()
 
+func hit(player):
+	player.changeHealth(-damage)
+	death()
 
-func set_random_pos() -> CharacterBody2D:
+func death():
+	if $"/root/Main": # needed from scene reload crash?
+		$"/root/Main".add_child(XP.instantiate().fromEnemy(self))
+		queue_free()
+
+func set_random_pos(player) -> CharacterBody2D:
 	var randAngle = randi() % 360
-	var radius = 150
-	position = Vector2(sin(randAngle), cos(randAngle)) * radius
+	var radius = 350
+	position = Vector2(
+		clamp(sin(randAngle) * radius + player.position.x, -600, 600),
+		clamp(cos(randAngle) * radius + player.position.y, -100, 450),
+	)
 	return self

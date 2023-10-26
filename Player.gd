@@ -2,10 +2,17 @@ extends CharacterBody2D
 
 @export var moveSpeed: float = 100.0
 var level: int = 1
+var maxXPScaling: int = 2
+var attackRateScaling: float = -0.3
 
 func _physics_process(delta):
 	getInput()
 	move_and_slide()
+	resolveCollisions()
+
+func resolveCollisions():
+	for body in $SoftColliderAnchor.get_overlapping_bodies():
+		body.hit(self)
 
 func getInput():
 	var inputVec = Input.get_vector(
@@ -22,7 +29,7 @@ func getInput():
 func changeHealth(change: float):
 	%HealthBar.value += change
 #	Game over -> currently reset to start
-	if !%HealthBar.value:
+	if %HealthBar.value <= %HealthBar.min_value:
 		get_tree().reload_current_scene()
 
 func changeXP(change: int):
@@ -36,8 +43,11 @@ func levelUp():
 	%HealthBar.value = %HealthBar.max_value
 #	update xp bar
 	%XPBar.min_value = %XPBar.max_value
-	%XPBar.max_value *= 2
+#	doubling will be too aggressive if xp and enemy don't scale
+	%XPBar.max_value *= maxXPScaling
 	level += 1
 	$"%XPBar/Level".text = "LVL: %s" % level
 #	level result
-	$AttackRangeAnchor.changeFrequency(-0.1)
+	$AttackRangeAnchor.changeFrequency(attackRateScaling)
+	if %XPBar.value >= %XPBar.max_value:
+		levelUp()
