@@ -6,10 +6,7 @@ extends CharacterBody2D
 @onready var Player = $"/root/Main/Player"
 @onready var NavAgent = $NavigationAgent2D
 
-
-func _ready():
-	pass
-
+@onready var XP = preload("res://xp.tscn")
 
 func _physics_process(delta):
 	NavAgent.target_position = Player.position
