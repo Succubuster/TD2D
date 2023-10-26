@@ -4,8 +4,7 @@ extends Node2D
 
 func _ready():
 	create_tween().set_loops().tween_callback(
-		func ():
-			add_child(Enemy.instantiate().set_random_pos())
+		func (): add_child(Enemy.instantiate().set_random_pos(%Player))
 	).set_delay(1)
 
 func _input(event):
