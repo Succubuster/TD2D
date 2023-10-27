@@ -29,20 +29,22 @@ func _createSoundPlayer(audioStream : AudioStream) -> AudioStreamPlayer2D:
 
 
 ## play sound 'globally' (directly on the listener)
-func playSound(audioStream : AudioStream) -> void:
+func playSound(audioStream : AudioStream) -> AudioStreamPlayer2D:
 	var audioPlayer = _createSoundPlayer(audioStream)
 	listener.add_child(audioPlayer)
 	audioPlayer.play()
+	return audioPlayer
 
 
 ## play sound at given position
-func playSoundAt(audioStream : AudioStream, pos : Vector2) -> void:
+func playSoundAt(audioStream : AudioStream, pos : Vector2) -> AudioStreamPlayer2D:
 	var audioPlayer = _createSoundPlayer(audioStream)
 	add_child(audioPlayer)
 	audioPlayer.global_position = pos
 	audioPlayer.play()
+	return audioPlayer
 
 
 ## play sound from a given node's position (does NOT automatically follow the node while playing)
-func playSoundFrom(audioStream : AudioStream, target : Node2D) -> void:
-	playSoundAt(audioStream, target.global_position)
+func playSoundFrom(audioStream : AudioStream, target : Node2D) -> AudioStreamPlayer2D:
+	return playSoundAt(audioStream, target.global_position)
