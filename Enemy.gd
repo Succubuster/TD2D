@@ -25,6 +25,8 @@ func death():
 	if $"/root/Main": # needed from scene reload crash?
 		$"/root/Main".add_child(XP.instantiate().fromEnemy(self))
 		queue_free()
+		# TODO this is just an example for playSound(), can be ripped out at any point
+		Audio.playSound(preload("res://audio/sfx_debug_2.wav"))
 
 func set_random_pos(player) -> CharacterBody2D:
 	var randAngle = randi() % 360

@@ -5,6 +5,9 @@ var level: int = 1
 var maxXPScaling: int = 2
 var attackRateScaling: float = -0.3
 
+func _ready() -> void:
+	Audio.listenerTarget = self
+
 func _physics_process(delta):
 	getInput()
 	move_and_slide()
