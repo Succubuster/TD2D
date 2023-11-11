@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://dphx8hlqf51ak"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_cgyac"]
+[ext_resource type="Texture2D" uid="uid://cty7x4ry8qyhk" path="res://Sprites/tile_0108.png" id="2_k5unj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wamif"]
+font_size = 120
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cgyac")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_k5unj")
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -236.0
+offset_right = 202.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TITLE T"
+label_settings = SubResource("LabelSettings_wamif")
+
+[node name="ButtonList" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 503.0
+offset_right = 246.0
+offset_bottom = 604.0
+
+[node name="StartButton" type="Button" parent="ButtonList"]
+layout_mode = 2
+text = "Start"
+
+[node name="SettingsButton" type="Button" parent="ButtonList"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="ButtonList"]
+layout_mode = 2
+text = "Quit"

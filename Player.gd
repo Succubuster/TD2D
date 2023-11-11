@@ -33,7 +33,8 @@ func changeHealth(change: float):
 	%HealthBar.value += change
 #	Game over -> currently reset to start
 	if %HealthBar.value <= %HealthBar.min_value:
-		get_tree().reload_current_scene()
+		#get_tree().reload_current_scene() # NOTE keeping this here since surely we'll wanna toggle on/off during development
+		get_tree().change_scene_to_file('res://MainMenu.tscn')
 
 func changeXP(change: int):
 	%XPBar.value += change
